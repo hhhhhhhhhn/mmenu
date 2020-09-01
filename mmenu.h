@@ -34,6 +34,7 @@ int mmenu(char** options, int options_len, char* prompt) {
 	int rows, cols;
 	getmaxyx(stdscr, rows, cols);
 	char* str = malloc(MAX_STR_SIZE * sizeof(char));
+	if(str == NULL) exit(1);
 	int len = 0;
 	int chr;
 	int selection = 1;
