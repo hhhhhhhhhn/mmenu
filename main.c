@@ -65,7 +65,7 @@ int main(int argc, char** argv) {
 
 	int chosen;
 	if(argc == 1)
-		chosen = mmenu(options->strs, options->used, " >");
+		chosen = mmenu(options->strs, options->used, "> ");
 	else
 		chosen = mmenu(options->strs, options->used, argv[1]);
 
