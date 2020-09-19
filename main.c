@@ -14,7 +14,8 @@ typedef struct darr {
 
 void darr_push(darr* arr, char* str) {
 	if(arr->used == arr->size) {
-		arr->strs = realloc(arr->strs, 2 * arr->size * sizeof(char*));
+		arr->size *= 2;
+		arr->strs = realloc(arr->strs, arr->size * sizeof(char*));
 		if(arr->strs == NULL) exit(1);
 	}
 	arr->strs[arr->used] = str;
