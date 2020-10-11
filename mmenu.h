@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <ncurses.h>
+#include <locale.h>
 
 #ifndef MAX_STR_SIZE // Of user input
 #define MAX_STR_SIZE 128
@@ -27,6 +28,7 @@ int str_len(char* str) {
 }
 
 int mmenu(char** options, int options_len, char* prompt) {
+	setlocale(LC_ALL, "");
 	initscr();
 	cbreak();
 	noecho();
