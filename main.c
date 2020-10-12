@@ -72,6 +72,8 @@ int main(int argc, char** argv) {
 
 	if(chosen == -1)
 		fputs("", file_ptr);
+	else if(argc > 2 && argv[2][0] == 't')
+		fprintf(file_ptr, "%i", chosen);
 	else
 		fputs(options->strs[chosen], file_ptr);
 

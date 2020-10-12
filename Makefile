@@ -1,8 +1,8 @@
-build:
+mmenu:
 	cc -lncurses -o mmenu main.c
 clean:
 	rm mmenu
-install:
+install: mmenu
 	mv mmenu /usr/bin/mmenu
 uninstall:
 	rm /usr/bin/mmenu
