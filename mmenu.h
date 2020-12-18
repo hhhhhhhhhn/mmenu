@@ -71,6 +71,7 @@ int mmenu(char** options, int options_len, char* prompt) {
 		}
 		switch(chr){
 			case KEY_BACKSPACE: // Backspace
+			case KEY_LEFT: // For when backspace breaks
 				if(len > 0) {
 					len--;
 					str[len] = '\0';
@@ -86,7 +87,7 @@ int mmenu(char** options, int options_len, char* prompt) {
 				break;
 			case '\n':
 				break;
-			case KEY_LEFT: case KEY_RIGHT: break;
+			case KEY_RIGHT: break;
 			default:
 				if(len != MAX_STR_SIZE - 1) {
 					str[len] = chr;
