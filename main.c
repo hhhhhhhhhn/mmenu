@@ -77,6 +77,8 @@ int main(int argc, char** argv) {
 	else
 		fputs(options->strs[chosen], file_ptr);
 
+	fputs("\n", file_ptr);
+
 	darr_free(options);	
 	fclose(file_ptr);
 }
