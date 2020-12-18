@@ -89,7 +89,7 @@ int mmenu(char** options, int options_len, char* prompt) {
 				break;
 			case KEY_RIGHT: break;
 			default:
-				if(len != MAX_STR_SIZE - 1) {
+				if(len != MAX_STR_SIZE - 1 && chr < 255) {
 					str[len] = chr;
 					len++;
 				}
