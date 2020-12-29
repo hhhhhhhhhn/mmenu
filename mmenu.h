@@ -47,7 +47,7 @@ int mmenu(char** options, int options_len, char* prompt) {
 	for(int i = 0; i < rows - 1 && i < options_len; i++) {
 		move(i + 1, 0);
 		if(i == 0) attron(A_STANDOUT);
-		printw(options[i]);
+		printw("%.*s", cols, options[i]);
 		if(i == 0) attroff(A_STANDOUT);
 	}
 	
@@ -104,7 +104,7 @@ int mmenu(char** options, int options_len, char* prompt) {
 				line++;
 				move(line, 0);
 				if(line == selection) attron(A_STANDOUT);
-				printw(options[i]);
+				printw("%.*s", cols, options[i]);
 				if(line == selection) attroff(A_STANDOUT);
 			}
 		}
