@@ -30,7 +30,7 @@ void darr_free(darr* arr) {
 	free(arr);
 }
 
-darr* get_options(FILE* file_ptr) {
+darr* get_options() {
 	darr* options = malloc(sizeof(darr));
 	if(options == NULL) exit(1);
 	options->strs = malloc(D_SIZE * sizeof(char*));
@@ -45,7 +45,7 @@ darr* get_options(FILE* file_ptr) {
 		str = malloc(MAX_STR_SIZE * sizeof(char));
 		if(str == NULL) exit(1);
 		for(i = 0; i < MAX_STR_SIZE; i++) {
-			chr = fgetc(file_ptr);
+			chr = fgetc(stdin);
 			if(chr == '\n' || chr == EOF) break;
 			str[i] = chr;
 		}
@@ -57,11 +57,9 @@ darr* get_options(FILE* file_ptr) {
 }
 
 int main(int argc, char** argv) {
-	FILE* file_ptr = fopen(PATH, "r");
-	if(file_ptr == NULL) exit(1);
-	darr* options = get_options(file_ptr);
-	fclose(file_ptr);
-	file_ptr = fopen(PATH, "w");
+	darr* options = get_options();
+	freopen("/dev/tty", "rw", stdin);
+	FILE* file_ptr = fopen(PATH, "w");
 	if(file_ptr == NULL) exit(1);
 
 	int chosen;
@@ -71,14 +69,11 @@ int main(int argc, char** argv) {
 		chosen = mmenu(options->strs, options->used, argv[1]);
 
 	if(chosen == -1)
-		fputs("", file_ptr);
+		printf("\n");
 	else if(argc > 2 && argv[2][0] == 't')
-		fprintf(file_ptr, "%i", chosen);
+		printf("%i\n", chosen);
 	else
-		fputs(options->strs[chosen], file_ptr);
-
-	fputs("\n", file_ptr);
+		printf("%s\n", options->strs[chosen]);
 
 	darr_free(options);	
-	fclose(file_ptr);
 }

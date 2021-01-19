@@ -3,10 +3,10 @@
 Small ncurses menu for c programs and shell scripts, similar to suckless' dmenu. 
 
 ## For shell scripts
-It reads the contents of /tmp/mmenu and changes them to the chosen option. It takes the second argument as the prompt, and if the third one is set to "t" or "true", it will write the index of the line instead of the line itself.
+It reads the contents of stdin and changes them to stdout. It takes the second argument as the prompt, and if the third one is set to "t" or "true", it will write the index of the line instead of the line itself.
 An example might look like: 
 ```bash
-ls -1 > /tmp/mmenu && mmenu "select file: " && </tmp/mmenu xargs less -R 
+ls -1 --color=never | mmenu "select file: " | xargs less -R 
 ```
 
 ## For C programs

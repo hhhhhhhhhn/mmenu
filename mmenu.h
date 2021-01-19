@@ -29,7 +29,9 @@ int str_len(char* str) {
 
 int mmenu(char** options, int options_len, char* prompt) {
 	setlocale(LC_ALL, "");
-	initscr();
+	FILE* f = fopen("/dev/tty", "r+");
+	SCREEN* screen = newterm(NULL, f, f);
+	set_term(screen);
 	cbreak();
 	noecho();
 	keypad(stdscr, TRUE);
